@@ -39,7 +39,12 @@ public class Keeper {
     public void readFromFile(MainView mainView){
         try{
             Scanner scanner = new Scanner(new File(filename));
-            savedNumber = scanner.nextInt();
+            if(scanner.hasNextInt()){
+                savedNumber = scanner.nextInt();
+            }else{
+                savedNumber = 0;
+            }
+
             mainView.getCounter().setCount(savedNumber);
             mainView.getLabel().setText(String.valueOf(savedNumber));
         } catch (FileNotFoundException e) {
